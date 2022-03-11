@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% LaTeX Template ( kws.sty ) for
+% 軽井沢ワークショップ用
+% 作者：早川吉弘(asaka@riec.tohoku.ac.jp) 2002/02/13
+% 
+% $Id: kws.sty,v 1.1.1.1 2002/02/26 08:55:37 taoka Exp $
+%
+% 使い方：
+%
+% \documentstyle[kws,11pt]{jarticle}      %for LaTeX 2.09 users
+%
+% \documentclass[a4paper,11pt]{jarticle}
+% \usepackage{kws}                  %for LaTeX2e users
+%
+% \begin{document}
+%
+%% もし、本文が英文ならば、日本語のタイトルと著者は不要です。
+%% その場合、下記の\OnlyEnglishtrueを有効にしてください。
+%% 英語のタイトルと著者のみを表示します。
+%% ただし、\jtitle, \jauthor, \jaddressの行は削字しないでください。
+%%\OnlyEnglishtrue
+%
+% \jtitle{...}		% 和文タイトル
+% \etitle{...}		% 英文タイトル
+% \jauthor{...}		% 和文氏名
+% \eauthor{...}		% 英文氏名
+% \jaddress{....}	% 和文所属
+% \eaddress{....}	% 英文所属
+%
+% \maketitle
+%
+% \section{...}
+%  \subsection{...}
+%   \subsubsection{...}
+%
+% \section{...}
+% .
+% .
+% .
+% \begin{thebibliography}{99}
+% \bibitem{...}
+% \bibitem{...}
+%    .
+%    .
+%    .
+% \end{thebibliography}
+%
+%
+% \end{document}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  マージンの設定(変更禁止)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\columnsep}{5mm}
+\setlength{\textwidth}{176mm}
+\setlength{\textheight}{247mm}
+\setlength{\oddsidemargin}{-8.4mm}
+\setlength{\evensidemargin}{-8.4mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\topmargin}{-0.4mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% TITLE page
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifOnlyEnglish
+%\OnlyEnglishtrue
+
+\def\jtitle#1{\gdef\@jtitle{#1}}        % Japanese Title
+\def\jauthor#1{\gdef\@jauthor{#1}}      % Japanese Authors
+\def\jaddress#1{\gdef\@jaddress{#1}}    % Japanese Address
+\def\etitle#1{\gdef\@etitle{#1}}        % English Title
+\def\eauthor#1{\gdef\@eauthor{#1}}      % English Authors
+\def\eaddress#1{\gdef\@eaddress{#1}}    % English Address
+%
+\def\maketitle{
+\twocolumn[
+\begin{center}%
+\ifOnlyEnglish%
+\else% OnlyEnglish
+{\LARGE \bf \@jtitle \par} \vskip 0.0em%    % JTitle
+\fi% OnlyEnglish
+{\LARGE \bf \@etitle \par} \vskip 1.5em%    % ETitle
+\ifOnlyEnglish%
+\else %OnlyEnglish%
+{\large \lineskip .5em \begin{tabular}[t]{c} \@jauthor \end{tabular}\par%
+\@jaddress \par}
+\vskip 1.5em%
+\fi %OnlyEnglish%
+{\large \lineskip .5em \begin{tabular}[t]{c} \@eauthor \end{tabular}\par%
+\@eaddress \par} 
+\end{center} \par%
+\vskip 1.5em
+]
+\sloppy \flushbottom
+\parindent 1.0em 
+\leftmargini 2.6em \leftmargin\leftmargini
+\leftmarginv .5em \leftmarginvi .5em
+\thispagestyle{empty} 
+\pagestyle{empty}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Sectioning Commands
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\section{ \@startsection {section}{1}{\z@}{-1.5ex plus
+    -0.5ex minus -.2ex}{1.0ex plus 0.3ex minus .2ex}{\normalsize\bf}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{-1.5ex plus
+    -0.2ex minus -.2ex}{0.8ex plus .2ex}{\normalsize\bf\raggedright}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-1ex plus
+   -0.5ex minus -.2ex}{0.8ex plus .2ex}{\normalsize\bf\raggedright}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
